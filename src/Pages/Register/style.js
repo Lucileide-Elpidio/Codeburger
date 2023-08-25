@@ -11,15 +11,15 @@ justify-content:center;
 align-items:center;
 `
 
-export const LoginImage = Styled.img`
-height:85%;
+export const ImageRegister = Styled.img`
+height:95%;
 
 `
 
 export const ContainerItems = Styled.div`
 background: #373737;
 border-radius:0px 10px 10px 0px;
-height:85%;
+height:95%;
 padding:35px 75px;
 display:flex;
 justify-content:center;
@@ -27,12 +27,12 @@ align-items:center;
 flex-direction:column;
 
 h1 {
-font-size: 24px;
+font-size: 20px;
 font-weight: 500;
 line-height: 28px;
 text-align: center;
 color:#FFF;
-margin-top:30px;
+margin-top:10px;
 }
 
 form{
@@ -41,7 +41,8 @@ form{
 }
 
 img{
-    margin-top:40px;
+    width:200px;
+    margin-top:10px;
 }
 
 `
@@ -50,12 +51,12 @@ export const Label = Styled.p`
 width: 197.39px;
 height: 19.707px;
 color: #FFF;
-font-size: 15px;
+font-size: 12px;
 font-style: normal;
 font-weight: 500;
 line-height: normal;
-margin-top:15px;
-margin-bottom:5px;
+margin-top:10px;
+margin-bottom:3px;
 margin-right:150px;
 `
 
@@ -63,12 +64,12 @@ export const Input = Styled.input`
 border:${props => (props.error ? ` 2px solid #CC1717;` : `none`)} ;
 background: #FFF;
 box-shadow: 3px 3px 10px 0px rgba(74, 144, 226, 0.19);
-width: 391.416px;
-height: 38.319px;
+width: 391px;
+height: 32px;
 padding-left:10px;
 `
 export const ErrorsMessage = Styled.p`
-font-size: 14px;
+font-size: 12px;
 font-weight: 400;
 line-height: 16px;
 color: #CC1717;
