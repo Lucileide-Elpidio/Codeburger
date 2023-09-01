@@ -13,11 +13,11 @@ font-size: 16px;
 
 cursor:pointer;
 
-b:hover{
+&:hover{
     opacity:0.8;
 }
 
-b:active{
+&:active{
 opacity:0.6;
 }
 `

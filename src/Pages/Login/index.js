@@ -1,11 +1,14 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { Link, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
 import Logo from '../../assets/logo.svg'
 import LogoImage from '../../assets/LogoLogin.svg'
 import Button from '../../components/Button'
+import { useUser } from '../../hooks/UserContext'
 import api from '../../Services/api'
 import {
   Container,
@@ -18,6 +21,8 @@ import {
 } from './style'
 
 function Login() {
+  const navigate = useNavigate()
+  const { putUserData } = useUser()
   const schema = Yup.object({
     email: Yup.string()
       .email('Digite um e-mail válido')
@@ -34,11 +39,29 @@ function Login() {
     resolver: yupResolver(schema)
   })
   const onSubmit = async clientData => {
-    const response = await api.post('sessions', {
-      email: clientData.email,
-      password: clientData.password
-    })
-    console.log(response)
+    try {
+      const { status, data } = await api.post(
+        'users',
+        {
+          email: clientData.email,
+          password: clientData.password
+        },
+        { validateStatus: () => true }
+      )
+      if (status === 201 || status === 200) {
+        toast.success('Logado com sucesso')
+        putUserData(data)
+        setTimeout(() => {
+          navigate('/')
+        }, 1000)
+      } else if (status === 400) {
+        toast.error('Email e/ou senha inválido, tente novamente')
+      } else {
+        throw new Error()
+      }
+    } catch (err) {
+      toast.error('Falha no sistema tente novamente')
+    }
   }
 
   return (
@@ -69,7 +92,10 @@ function Login() {
           </Button>
         </form>
         <SingninLink>
-          Não possui conta? <a>Cadastre aqui</a>
+          Não possui conta?{' '}
+          <Link to="/cadastro" style={{ color: 'white' }}>
+            Cadastre aqui
+          </Link>
         </SingninLink>
       </ContainerItems>
     </Container>
