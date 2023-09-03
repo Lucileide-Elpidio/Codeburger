@@ -41,7 +41,7 @@ function Login() {
   const onSubmit = async clientData => {
     try {
       const { status, data } = await api.post(
-        'users',
+        'sessions',
         {
           email: clientData.email,
           password: clientData.password
@@ -87,7 +87,7 @@ function Login() {
           />
           <ErrorsMessage>{errors.password?.message}</ErrorsMessage>
 
-          <Button type="submit" style={{ marginTop: 30, marginBottom: 25 }}>
+          <Button type="submit" style={{ margin: '30px auto 25px' }}>
             Entrar
           </Button>
         </form>
