@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import LogoHome from '../../assets/logo-home.png'
 import CategoryCarousel from '../../components/CategoryCarousel'
